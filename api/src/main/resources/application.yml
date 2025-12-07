@@ -1,2 +1,15 @@
 spring.application.name: employee-api
 server.port: 8111
+
+# Mock Employee API Configuration
+employee:
+  api:
+    base-url: http://localhost:8112/api/v1/employee
+    max-retries: 3
+    retry-delay-ms: 1000
+
+# Logging Configuration
+logging:
+  level:
+    com.reliaquest.api: DEBUG
+    org.springframework.web.client: DEBUG
