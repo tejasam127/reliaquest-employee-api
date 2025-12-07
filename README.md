@@ -138,6 +138,46 @@ limit requests, so keep this mind when designing/implementing the actual Employe
 
 _Note_: Console logs each mock employee upon startup.
 
+### How to Run Employee API (API module)
+
+**Prerequisites:** Java 17+ installed (or Java 23 with Gradle toolchain auto-provisioning)
+
+**Step 1:** Start the Mock Employee API (in terminal 1):
+```bash
+./gradlew server:bootRun
+```
+
+**Step 2:** Start the Employee API (in terminal 2):
+```bash
+./gradlew api:bootRun
+```
+
+**Step 3:** Test the endpoints:
+```bash
+# Get all employees
+curl http://localhost:8111/api/v1/employee
+
+# Search by name
+curl http://localhost:8111/api/v1/employee/search/John
+
+# Get highest salary
+curl http://localhost:8111/api/v1/employee/highestSalary
+
+# Get top 10 earners
+curl http://localhost:8111/api/v1/employee/topTenHighestEarningEmployeeNames
+
+# Create employee
+curl -X POST http://localhost:8111/api/v1/employee \
+  -H "Content-Type: application/json" \
+  -d '{"name": "John Doe", "salary": 75000, "age": 30, "title": "Developer"}'
+```
+
+### How to Run Tests
+
+```bash
+./gradlew api:test
+```
+
 ### Code Formatting
 
 This project utilizes Gradle plugin [Diffplug Spotless](https://github.com/diffplug/spotless/tree/main/plugin-gradle) to enforce format
